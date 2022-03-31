@@ -1,4 +1,4 @@
-package com.myshopping;
+package com.myshoppingpsd;
 
 import android.os.Bundle;
 

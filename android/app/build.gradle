@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 
+apply plugin: 'com.google.gms.google-services'
+
 import com.android.build.OutputFile
 
 /**
@@ -130,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.myshopping"
+        applicationId "com.myshoppingpsd"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -184,7 +186,10 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "com.facebook.react:react-native:+"
+    // From node_modules
+    implementation platform("com.google.firebase:firebase-bom:29.2.1")
+    implementation "com.google.firebase:firebase-analytics"
 
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";

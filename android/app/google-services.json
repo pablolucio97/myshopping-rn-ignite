@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "356826445068",
+    "project_id": "myshopping-37693",
+    "storage_bucket": "myshopping-37693.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356826445068:android:de8a5ced196fd65fab8529",
+        "android_client_info": {
+          "package_name": "com.myshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356826445068-8030pkp1f31akfmds8hrj3sbllmrchk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEp5RJsmhIMDss2-K4l7UDosohm3ob04I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356826445068-8030pkp1f31akfmds8hrj3sbllmrchk2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356826445068:android:f18257521dee29f3ab8529",
+        "android_client_info": {
+          "package_name": "com.myshoppingpsd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356826445068-tq7aqhkt48ufm36m98d4u6mif1d3gji0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myshoppingpsd",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "356826445068-8030pkp1f31akfmds8hrj3sbllmrchk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEp5RJsmhIMDss2-K4l7UDosohm3ob04I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356826445068-8030pkp1f31akfmds8hrj3sbllmrchk2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
