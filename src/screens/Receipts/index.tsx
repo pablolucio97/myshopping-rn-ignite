@@ -1,31 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
+import storage from '@react-native-firebase/storage'
 
 import { Container, PhotoInfo } from './styles';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
-import { File } from '../../components/File';
+import { File, FileProps } from '../../components/File';
 
 import { photosData } from '../../utils/photo.data';
 
 export function Receipts() {
+
+  const [photos, setPhotos] = useState<FileProps[]>([])
+  const [currentPhotoView, setCurrentPhotoView] = useState('')
+  const [currentPhotoInfo, setCurrentPhotoInfo] = useState('')
+
+  useEffect(() => {
+    storage()
+      .ref('/images')
+      .list()
+      .then(result => {
+        const files: FileProps[] = []
+        result.items.forEach(file => {
+          files.push({
+            name: file.name,
+            path: file.fullPath
+          })
+        })
+        setPhotos(files)
+      })
+  }, [])
+
+  async function handleShowImage(path: string) {
+    const photo = await storage()
+      .ref(path)
+      .getDownloadURL()
+      setCurrentPhotoView(photo)
+
+     const info = await storage() 
+     .ref(path)
+     .getMetadata()
+     setCurrentPhotoInfo(`Uploaded at ${info.timeCreated}`)
+  }
+
   return (
     <Container>
       <Header title="Comprovantes" />
 
-      <Photo uri="" />
+      <Photo uri={currentPhotoView} />
 
       <PhotoInfo>
-        Informações da foto
+        {currentPhotoInfo}
       </PhotoInfo>
 
       <FlatList
-        data={photosData}
+        data={photos}
         keyExtractor={item => item.name}
         renderItem={({ item }) => (
           <File
             data={item}
-            onShow={() => { }}
+            onShow={() => handleShowImage(item.path)}
             onDelete={() => { }}
           />
         )}
