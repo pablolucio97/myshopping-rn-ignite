@@ -15,8 +15,8 @@ export function Receipts() {
   const [currentPhotoView, setCurrentPhotoView] = useState('')
   const [currentPhotoInfo, setCurrentPhotoInfo] = useState('')
 
-  useEffect(() => {
-    storage()
+  async function fetchImages() {
+    await storage()
       .ref('/images')
       .list()
       .then(result => {
@@ -29,19 +29,31 @@ export function Receipts() {
         })
         setPhotos(files)
       })
-  }, [])
+  }
+
+  async function deleteImage(path: string) {
+    await storage()
+      .ref(path)
+      .delete()
+      .then(() => console.log('Deleted image successfully'))
+  }
+
 
   async function handleShowImage(path: string) {
     const photo = await storage()
       .ref(path)
       .getDownloadURL()
-      setCurrentPhotoView(photo)
+    setCurrentPhotoView(photo)
 
-     const info = await storage() 
-     .ref(path)
-     .getMetadata()
-     setCurrentPhotoInfo(`Uploaded at ${info.timeCreated}`)
+    const info = await storage()
+      .ref(path)
+      .getMetadata()
+    setCurrentPhotoInfo(`Uploaded at ${info.timeCreated}`)
   }
+
+  useEffect(() => {
+    fetchImages()
+  }, [photos])
 
   return (
     <Container>
@@ -60,7 +72,7 @@ export function Receipts() {
           <File
             data={item}
             onShow={() => handleShowImage(item.path)}
-            onDelete={() => { }}
+            onDelete={() => deleteImage(item.path)}
           />
         )}
         contentContainerStyle={{ paddingBottom: 100 }}

@@ -44,6 +44,8 @@ export function Upload() {
       })
 
       uploadTask.then(() => {
+        // useImageUrl as default image at images listing 
+        const imageUrl = reference.getDownloadURL()
         console.log('Upload completed')
       })
     } catch (error) {
